@@ -3,23 +3,25 @@ version: '3'
 services:
   
   nginx:
-    image: nginx:1.17.6-alpine
+    #image: nginx:1.17.6-alpine
+    
+    build:
+      context: ./nginx
+    
+    #Imagem é para quando tem algo pronto, posso criar um conteiner customizado.
+    #posso utilizar o context: e referenciar o arquivo dockerfile que estará a imagem     
     container_name: nginx    
     ports: 
-      - "3050:80"
+      - "3050:80"      
 
   node1:  
     image: nginx:1.17.6-alpine 
     volumes: 
       - /home/douglas/Documentos/exer-docker/server1:/usr/share/nginx/html
-    container_name: node1   
-    ports: 
-      - "8080"            
+    container_name: node1            
 
   node2:  
     image: nginx:1.17.6-alpine 
     volumes: 
       - /home/douglas/Documentos/exer-docker/server2:/usr/share/nginx/html
-    container_name: node2 
-    ports: 
-      - "8080"  
+    container_name: node2
